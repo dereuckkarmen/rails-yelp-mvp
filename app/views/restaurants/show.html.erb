@@ -1,0 +1,28 @@
+
+<div class="container mt-3 center">
+  <div class="row">
+    <div class="col-6 offset-3 text-center">
+      <h1><%= @restaurant.name %></h1>
+
+      <p>Located at: <%= @restaurant.address %></p>
+
+      <p>Category of restaurant: <%= @restaurant.category %></p>
+
+      <% @restaurant.reviews.each do |review| %>
+        <p>Review:</p>
+        <p>Rating: <%= review.rating %></p>
+        <p><%= review.content %></p>
+      <% end %>
+
+      <%= simple_form_for [@restaurant, @review] do |f| %>
+        <%= f.input :rating %>
+        <%= f.input :content %>
+        <%= f.submit %>
+      <% end %>
+
+
+      <%= link_to "Back to all restaurants", restaurants_path, class: "btn btn-primary" %>
+      
+    </div>
+  </div>
+</div>
